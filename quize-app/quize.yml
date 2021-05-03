@@ -1,0 +1,30 @@
+server:
+  type: simple
+  applicationContextPath: /
+  adminContextPath: /admin
+  registerDefaultExceptionMappers: false
+  connector:
+      port: 39015
+      type: http
+  requestLog:
+    appenders:
+      - type: console
+        layout:
+          type: iot-access-json
+  
+database:
+  driverClass: org.mariadb.jdbc.Driver
+  user: root
+  #password: ipms_pw
+  password: password
+  url: jdbc:mysql://localhost:3306/ipms
+  logValidationErrors: true
+  validationQuery: select 1 from dual
+  properties:
+    hibernate.dialect: org.hibernate.dialect.MySQLDialect
+    hibernate.hbm2ddl.auto: validate
+    hibernate.default_schema: ipms
+    hibernate.show_sql: false
+    hibernate.session.events.log: false
+    hibernate.jdbc.batch_size: 100
+    hibernate.generate_statistics: true
